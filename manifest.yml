@@ -1,0 +1,21 @@
+---
+applications:
+  - command: NODE_ENV=production npm start
+    env:
+      NPM_CONFIG_PRODUCTION: false
+      NODE_ENV: cloud-foundry
+    instances: 1
+    timeout: 180
+    buildpack: sdk-for-nodejs
+    memory: 2500M
+    disk_quota: 1500M
+    domain: mybluemix.net
+    host: skill-match
+    name: skill-match
+    services:
+    - prod-skillmatch-mongodb
+    declared-services:
+      prod-skillmatch-mongodb:
+        label: prod-skillmatch-mongodb
+        plan: Standard
+

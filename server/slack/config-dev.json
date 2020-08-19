@@ -1,0 +1,5 @@
+{
+  "subscriptions" : ["public-skillmatch"],
+  "cronstring": "",
+  "availability_link": "https://w3-01.ibm.com/services/tools/marketplace/displayMyHoursPlan.wss" 
+}

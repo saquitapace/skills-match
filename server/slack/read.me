@@ -1,0 +1,75 @@
+-in development
+
+##Overview:
+
+###Installation Guide (for development):
+  This program is a back-end for sending and receiving messages via slack bot, so 
+  a slack bot is needed to be created and installed to your workspace first, then 
+  this backend can be hooked onto your bot to perform the integration tasks.
+  To create install this app to your workspace, first go to https://api.slack.com,
+  click 'Start Building' follow the instructions to finish creating the bot app.
+  After the bot is created, we then add 'Bot' and 'Event Subscriptions'
+  functionalities to this app. 
+
+  'Bot' feature enables your app to chat with other users via direct messages. 
+  To set it up, click on 'Bots' under 'Adding features and functionality' tab 
+  and input your bot's name and display names. 
+  After it is set up, goto 'OAuth and Permissions' in left menu bar, click button
+  'Install App to Workspace' and copy 'bot user oauth access token' that starts with 
+  'xoxb' and paste it under bot.token in 'config.json' file in this folder.
+
+  'Interactive Components' lets Slack send back notification when user interacts with 
+  the interactive messages slack bot sends out. To set this up, click 'Add features 
+  and functionality -> Interactive Components' in 'Basic information' on left menu.
+  input the API endpoint we opens for this type of post requests and click 'Save Changes'
+  after finished.
+  
+  For development at local:
+  We need 'ngrok'(https://ngrok.com) to tunnel the notification http requests to your local 
+  server. After setting up the tunneling url, copy and paste it to your 'request url' field 
+  in event subscription tab. Then the Slack will verify this server by sending 'challenge' requests
+  to it (so make sure you are running the server under the port number ngrok is tunneling to).
+  upon successful response, the url will be verified and you can add Events below that we need.
+  Click 'add bot user event' under 'Subscribe to Bot Events' section and select 'message.im' Events
+  to add it to the subscription events list. 
+
+###Start up:
+  this app starts with the backend server
+  If developing on local host:
+    to receive event subscription message from Slack, need to use ngrok to create a DNS name other than 
+    localhost. for more details go to https://api.slack.com/tutorials/tunneling-with-ngrok. 
+
+
+###Implementation plan: 
+  only let it subscribe to a specific channel - done
+  do not use websocket listener anymore, change to event api and web api (REST) for less incoming data load - done
+  additional requirements: ngrok for local development - done
+  add interactive buttons to slackbot's messages -done
+    resolve slackbot error - done
+    replace original attachment according to user's response - done
+  feedback for modified (new) skills: (change of color for example)
+  when no skill is fetched, display a different message. - done
+  more documentation to chatbot.js - done 
+  color change on the skill being modified - unable to specify color
+  use blocks to format messages - done
+  *add verification middlewares for events api and interactive components*
+  change Slackbot userlist functionalities: don't init from scratch every time
+  filter out skills that user already have 
+
+
+###Source Code:
+  routes/api/Slack.js: api endpoint for this application, expected to receive post requests from Slack's api and parse user's reply from it.
+  slack/SlackBot.js: abstract controller for this module, manages users in Slack channel (targeted user space) and the chatbots for them
+  slack/Chatbot.js: chatbot implementation. Uses a generator function to dynamically generate replies based on user input
+  
+
+###Development Guide:
+  note: 
+
+Deployment Guide:
+
+
+
+test channel invitation link:
+(expires on March 12th)
+https://join.slack.com/t/slackintegrateglobal/shared_invite/enQtNTQ4NTU0MDg3MjMzLWM2MGY1OTUyOWI4MTgyNGRjNTZlZGVjNWI2ZDZkOTUwYjcyNDVlNmNhZDU3YmEwMmRhNGQxYWZmNTg0NzA4ZmM

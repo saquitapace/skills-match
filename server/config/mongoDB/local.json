@@ -1,0 +1,5 @@
+{
+  "uri": "localhost:27017/pex-staffing-dev",
+  "dbName": "pex-staffing-dev",
+  "poolSize": 10
+}

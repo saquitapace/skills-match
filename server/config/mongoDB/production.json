@@ -1,0 +1,8 @@
+{
+
+  "uri": "portal-ssl773-48.bmix-dal-yp-22ca89de-d431-40f0-9459-02aa59b7e640.4048854134.composedb.com:19195,portal-ssl812-49.bmix-dal-yp-22ca89de-d431-40f0-9459-02aa59b7e640.4048854134.composedb.com:19195/pex-staffing-prod?authSource=admin&ssl=true",
+  "dbName": "pex-staffing-prod",
+  "username": "admin",
+  "password": "GSEZTSEYNMZLLYKU",
+  "poolSize": 10
+}

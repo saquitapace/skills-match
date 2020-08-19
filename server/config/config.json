@@ -1,0 +1,49 @@
+{
+  "dbSource": "mongoDB",
+  "cluster": false,
+  "log4js": {
+		"appenders": {
+			"APP": {
+				"type": "file",
+				"filename": "server/log/app.log"
+			},
+			"ADM": {
+				"type": "file",
+				"filename": "server/log/app.log"
+			},
+			"TAL": {
+				"type": "file",
+				"filename": "server/log/app.log"
+			},
+			"PRO": {
+				"type": "file",
+				"filename": "server/log/app.log"
+			},
+			"CONSOLE": {
+				"type": "console"
+			}
+		},
+		"categories": {
+			"default": {
+				"appenders": ["CONSOLE"],
+				"level": "info"
+			},
+			"APP": {
+				"appenders": ["CONSOLE", "APP"],
+				"level": "info"
+			},
+			"ADM": {
+				"appenders": ["CONSOLE", "ADM"],
+				"level": "info"
+			},
+			"TAL": {
+				"appenders": ["CONSOLE", "TAL"],
+				"level": "info"
+			},
+			"PRO": {
+				"appenders": ["CONSOLE", "PRO"],
+				"level": "info"
+			}
+		}
+	}
+}
